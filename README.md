@@ -89,6 +89,9 @@ Otherwise, people may get access to machines, which aren't accessible by default
 For example, an attacker could call `https://tormate.url/tormate.php?url=https://hidden.machine.org/secret.html` and TORMATE will deliver the `secret.html` file, while the attacker regularly does not have access to `hidden.machine.org` (e.g. because of a firewall in between attacker and `hidden.machine.org`).
 Thus, TORMATE may accidentally help people to bypass firewalls...
 
+Furthermore, be warned that you may **expose your own actual IP address** (and thereby your location), possibly even if you use a [tunnelling service](https://github.com/anderspitman/awesome-tunneling)! By calling `https://tormate.url/tormate.php?url=https://ip-geolocate.mallory.example`, a malicious actor Mallory can correlate their request to `tormate.url` with TORMATE's request to `ip-geolocate.mallory.example`, which will reveal TORMATE's IP address. TORMATE uses your system's [cURL](https://en.wikipedia.org/wiki/CURL) to fetch pages, and if you don't configure it to tunnel internet requests, the IP address that Mallory sees will be your actual address.
+
+For the same reason, **do not install TORMATE next to [Snowflake](https://snowflake.torproject.org)!** Snowflake is a tool that helps users whose internet access is being censored connect to the Tor network. If you host Snowflake and TORMATE on the same server, Mallory may be able to determine the IP address of your Snowflake proxy. This information could be used to to deduct that people who appear to be “talking” to you via a “video conference” or a “messenger” are actually accessing the Tor network instead. This would defeat the whole purpose of Snowflake and endanger your Snowflake proxy's users if they must fear negative consequences from being caught using Tor.
 
 ## Licence
 
