@@ -54,7 +54,7 @@ define ("MAX_FILE_SIZE", 5 * 1024 * 1024);
  *
  * undefined by default
  */
-//define ("PROXY", "some.server.org:8888")
+//define ("PROXY", "some.server.example:8888")
 
 
 /* secret that clients need to provide to use the gate
